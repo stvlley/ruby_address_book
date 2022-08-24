@@ -10,22 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_061003) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_24_065716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "people", force: :cascade do |t|
-    t.string "salutation"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.integer "ssn"
-    t.date "birth_date"
-    t.text "comment"
-    t.bigint "contact_id"
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "town"
+    t.integer "zip_code"
+    t.string "state"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_people_on_contact_id"
   end
 
 end
