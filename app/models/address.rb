@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-    has_many :peole :as => :contact
+    has_many :people :as => :contact
 end
