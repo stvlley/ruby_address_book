@@ -1,3 +1,3 @@
 class Number < ApplicationRecord
-    has_many :people :as => :contact
+    has_many :people
 end
