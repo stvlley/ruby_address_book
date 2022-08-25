@@ -56,4 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_005305) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "addresses", "people", column: "people_id"
+  add_foreign_key "emails", "people", column: "people_id"
+  add_foreign_key "numbers", "people", column: "people_id"
 end
