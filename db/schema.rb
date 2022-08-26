@@ -10,38 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_25_005305) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_26_172049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "street"
-    t.string "town"
-    t.integer "zip_code"
-    t.string "state"
-    t.string "country"
-    t.bigint "people_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["people_id"], name: "index_addresses_on_people_id"
-  end
-
-  create_table "emails", force: :cascade do |t|
-    t.string "email_address"
-    t.text "comment"
-    t.bigint "people_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["people_id"], name: "index_emails_on_people_id"
-  end
-
   create_table "numbers", force: :cascade do |t|
     t.integer "phone_number"
-    t.text "comment"
-    t.bigint "people_id"
+    t.text "commment"
+    t.bigint "person_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["people_id"], name: "index_numbers_on_people_id"
+    t.index ["person_id"], name: "index_numbers_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -56,7 +35,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_005305) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "addresses", "people", column: "people_id"
-  add_foreign_key "emails", "people", column: "people_id"
-  add_foreign_key "numbers", "people", column: "people_id"
+  add_foreign_key "numbers", "people"
 end

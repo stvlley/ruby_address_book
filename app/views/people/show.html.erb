@@ -16,3 +16,33 @@
 
   <%= button_to "Destroy this person", @person, method: :delete %>
 </div>
+
+<h2>Number:</h2>
+<% @person.numbers.each do |number| %>
+  <p>
+    <strong>Phone Numbers:</strong>
+    <%= number.phone_number %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= number.commment %>
+  </p>
+<% end %>
+
+
+<h2>Add a Number:</h2>
+<%= form_with model: [@person, @person.numbers.build ] do 
+|form| %>
+<p>
+<%= form.label :phone_number %><br>
+<%= form.text_field :phone_number %>
+</p>
+<p>
+<%= form.label :comment %><br>
+<%= form.text_area :commment %>
+</p>
+<p>
+<%= form.submit %>
+</p>
+<% end %>
