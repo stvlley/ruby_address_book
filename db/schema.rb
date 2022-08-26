@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_072233) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_25_005305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,25 +20,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_072233) do
     t.integer "zip_code"
     t.string "state"
     t.string "country"
+    t.bigint "people_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["people_id"], name: "index_addresses_on_people_id"
   end
 
   create_table "emails", force: :cascade do |t|
     t.string "email_address"
     t.text "comment"
+    t.bigint "people_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["people_id"], name: "index_emails_on_people_id"
   end
 
   create_table "numbers", force: :cascade do |t|
     t.integer "phone_number"
     t.text "comment"
+    t.bigint "people_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["people_id"], name: "index_numbers_on_people_id"
   end
 
-  create_table "person", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "salutation"
     t.string "first_name"
     t.string "middle_name"
@@ -46,11 +52,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_072233) do
     t.integer "ssn"
     t.date "birth_date"
     t.text "comment"
-    t.string "contact_type"
-    t.bigint "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contact_type", "contact_id"], name: "index_person_on_contact"
   end
 
+  add_foreign_key "addresses", "people", column: "people_id"
+  add_foreign_key "emails", "people", column: "people_id"
+  add_foreign_key "numbers", "people", column: "people_id"
 end

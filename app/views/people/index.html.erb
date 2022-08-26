@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>People</h1>
+<h1>Contacts</h1>
 
 <div id="people">
   <% @people.each do |person| %>
-    <%= render person %>
-    <p>
-      <%= link_to "Show this person", person %>
-    </p>
+  <li>
+    <%= link_to person.first_name, person %>
+  </li>
   <% end %>
 </div>
 
-<%= link_to "New person", new_person_path %>
+<%= link_to "New contact", new_person_path %>

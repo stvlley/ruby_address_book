@@ -1,15 +1,59 @@
-<%= form_with(model: person) do |form| %>
-  <% if person.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+<%= form_with model: person do |form| %>
+  <div>
+    <%= form.label :salutation %><br>
+    <%= form.text_field :salutation %>
+    <% person.errors.full_messages_for(:salutation).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
-      <ul>
-        <% person.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div>
+    <%= form.label :first_name %><br>
+    <%= form.text_area :first_name %><br>
+    <% person.errors.full_messages_for(:first_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :middle_name %><br>
+    <%= form.text_area :middle_name %><br>
+    <% person.errors.full_messages_for(:middle_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %><br>
+    <%= form.text_area :last_name %><br>
+    <% person.errors.full_messages_for(:last_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :ssn %><br>
+    <%= form.text_area :ssn %><br>
+    <% person.errors.full_messages_for(:ssn).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :birth_date %><br>
+    <%= form.text_area :birth_date %><br>
+    <% person.errors.full_messages_for(:birth_date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %><br>
+    <% person.errors.full_messages_for(:comment).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
   <div>
     <%= form.submit %>

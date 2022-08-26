@@ -1,3 +1,5 @@
 class Number < ApplicationRecord
-    has_many :people :as => :contact
+    has_many :people
+
+    validates :phone_number, presence :true
 end
