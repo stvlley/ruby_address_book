@@ -1,6 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @person %>
+<div>
+ <h2>Salutation: <%= @person.salutation %></h2>
+  <h2>First Name: <%= @person.first_name %></h2>
+  <h2>Middle Name: <%= @person.middle_name %></h2>
+  <h2>Last Name: <%= @person.last_name %></h2>
+  <h2>SSN:<%= @person.ssn %></h2>
+  <h2>Birthday:<%= @person.birth_date %></h2>
+  <h2>Comments:<%= @person.comment %></h2>
+<div>
 
 <div>
   <%= link_to "Edit this person", edit_person_path(@person) %> |

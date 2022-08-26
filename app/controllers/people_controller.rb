@@ -8,6 +8,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1 or /people/1.json
   def show
+    @person = Person.find(params[:id])
   end
 
   # GET /people/new
@@ -65,6 +66,6 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.fetch(:person, {})
+      params.require(:person).permit(:salutation, :first_name, :middle_name, :last_name, :ssn, :birth_date, :comment)
     end
 end
