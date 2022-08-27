@@ -1,48 +1,45 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="containe text-center">
+  <div class="row">
+    <div class="col">
+      <h2><%= @person.salutation %> <%= @person.first_name %> <%= @person.middle_name %> <%= @person.last_name %>  </h2>
+      <h2>Social Security Number: <%= @person.ssn %></h2>
+      <h2>Birthday: <%= @person.birth_date %></h2>
+      <h2>Comments:<%= @person.comment %></h2>
+      <%= link_to "Edit this person", edit_person_path(@person) %> |
+      <%= link_to "Back to people", people_path %>
+      <%= button_to "Destroy this person", @person, method: :delete %>
+    </div>
+  <div class="col">
+      <h2>Number:</h2>
+      <% @person.numbers.each do |number| %>
+      <p>
+      <strong>Phone Numbers:</strong>
+      <%= number.phone_number %>
+      </p>
+      <p>
+      <strong>Comment:</strong>
+      <%= number.commment %>
+      </p>
+      <% end %>
+
+      <h2>Add a Number:</h2>
+      <%= form_with model: [@person, @person.numbers.build ] do 
+      |form| %>
+      <p>
+      <%= form.label :phone_number %><br>
+      <%= form.text_field :phone_number %>
+      </p>
+      <p>
+      <%= form.label :comment %><br>
+      <%= form.text_area :commment %> 
+      </p>
+      <p>
+      <%= form.submit %>
+      </p>
+      <% end %>
+      </div>
+   </div>
 <div>
- <h2>Salutation: <%= @person.salutation %></h2>
-  <h2>First Name: <%= @person.first_name %></h2>
-  <h2>Middle Name: <%= @person.middle_name %></h2>
-  <h2>Last Name: <%= @person.last_name %></h2>
-  <h2>SSN:<%= @person.ssn %></h2>
-  <h2>Birthday:<%= @person.birth_date %></h2>
-  <h2>Comments:<%= @person.comment %></h2>
-<div>
 
-<div>
-  <%= link_to "Edit this person", edit_person_path(@person) %> |
-  <%= link_to "Back to people", people_path %>
-
-  <%= button_to "Destroy this person", @person, method: :delete %>
-</div>
-
-<h2>Number:</h2>
-<% @person.numbers.each do |number| %>
-  <p>
-    <strong>Phone Numbers:</strong>
-    <%= number.phone_number %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= number.commment %>
-  </p>
-<% end %>
-
-
-<h2>Add a Number:</h2>
-<%= form_with model: [@person, @person.numbers.build ] do 
-|form| %>
-<p>
-<%= form.label :phone_number %><br>
-<%= form.text_field :phone_number %>
-</p>
-<p>
-<%= form.label :comment %><br>
-<%= form.text_area :commment %>
-</p>
-<p>
-<%= form.submit %>
-</p>
-<% end %>
