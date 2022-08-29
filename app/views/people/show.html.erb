@@ -16,7 +16,7 @@
       </div>
     </div>
   <div class="col">
-      <h2>Number:</h2>
+      <h2>Number</h2>
       <% @person.numbers.each do |number| %>
       <p>
       <strong>Phone Numbers:</strong>
@@ -44,6 +44,35 @@
       </p>
       <% end %>
       </div>
+        <div class="col">
+          <h2>Email</h2>
+            <% @person.emails.each do |email| %>
+          <p>
+            <strong>Emails:</strong>
+            <%= email.email %>
+          </p>
+          <p>
+            <strong>Comment:</strong>
+            <%= email.comment %>
+          </p>
+            <% end %>
+
+        <h2>Add a Email:</h2>
+          <%= form_with model: [@person, @person.emails.build ] do 
+         |form| %>
+        <p>
+         <%= form.label :email %><br>
+          <%= form.text_field :email %>
+        </p>
+        <p>
+          <%= form.label :comment %><br>
+          <%= form.text_area :commment %> 
+         </p>
+         <p>
+           <%= form.submit %>
+         </p>
+           <% end %>
+       </div>
    </div>
 <div>
 
