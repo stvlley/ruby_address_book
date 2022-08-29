@@ -73,6 +73,62 @@
          </p>
            <% end %>
        </div>
+
+         </div>
+        <div class="col">
+          <h2>Address</h2>
+            <% @person.addresses.each do |address| %>
+          <p>
+            <strong>street:</strong>
+            <%= address.street %>
+          </p>
+          <p>
+            <strong>Town:</strong>
+            <%= address.town %>
+          </p>
+          <p>
+            <strong>Zipcode:</strong>
+            <%= address.zipcode %>
+          </p>
+          <p>
+            <strong>State:</strong>
+            <%= address.state %>
+          </p>
+          <p>
+            <strong>Country:</strong>
+            <%= address.country %>
+          </p>
+            <% end %>
+
+        <h2>Add a Address:</h2>
+          <%= form_with model: [@person, @person.addresses.build ] do 
+         |form| %>
+        <p>
+         <%= form.label :streetl %><br>
+          <%= form.text_field :street %>
+        </p>
+        <p>
+          <%= form.label :town %><br>
+          <%= form.text_area :town %> 
+         </p>
+         <p>
+          <%= form.label :zipcode %><br>
+          <%= form.text_area :zipcode %> 
+         </p>
+         <p>
+          <%= form.label :state %><br>
+          <%= form.text_area :state %> 
+         </p>
+         <p>
+          <%= form.label :country %><br>
+          <%= form.text_area :country %> 
+         </p>
+         <p>
+           <%= form.submit %>
+         </p>
+           <% end %>
+       </div>
+
    </div>
 <div>
 
