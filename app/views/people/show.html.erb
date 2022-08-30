@@ -65,23 +65,15 @@
                   turbo_confirm: "Are you sure?"
                 } %>
         </p>
-        <%= link_to "Edit this email", edit_person_email_path(@person)%>
-      <% end %>
-      <h2>Add a Email:</h2>
-      <%= form_with model: [@person, @person.emails.build ] do 
-         |form| %>
-      <p>
-        <%= form.label :email %><br>
-        <%= form.text_field :email %>
-      </p>
-      <p>
-        <%= form.label :comment %><br>
-        <%= form.text_area :commment %>
-      </p>
-      <p>
-        <%= form.submit %>
-      </p>
+        <div class="d-grid gap-2 col-6 mx-auto">
+        <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
+    <%= link_to "Edit", edit_person_address_path(@person), :class => "btn"%>
+    </div>
     <% end %>
+  <div class="btn btn-success btn-sm">
+    <%= link_to "Create", new_person_address_path(@person), :class => "btn"%>
+    </div>
+    </div>
   </div>
 <div class="col">
   <h2>Address</h2>
@@ -112,13 +104,15 @@
                   turbo_confirm: "Are you sure?"
                 } %>
     </p>
+    <div class="d-grid gap-2 col-6 mx-auto">
     <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
-    <%= link_to "Edit this address", edit_person_address_path(@person), :class => "btn"%>
+    <%= link_to "Edit", edit_person_address_path(@person), :class => "btn"%>
     </div>
     
   <% end %>
   <div class="btn btn-success btn-sm">
-    <%= link_to "Create A Address", new_person_address_path(@person), :class => "btn"%>
+    <%= link_to "Create", new_person_address_path(@person), :class => "btn"%>
+    </div>
     </div>
 </div>
 </div>

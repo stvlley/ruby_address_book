@@ -19,6 +19,12 @@ class EmailsController < ApplicationController
     def edit 
     
     end
+
+
+    def new
+      @person = Person.find(params[:person_id])
+      @email = @person.emails.new
+    end
     
     def update
         respond_to do |format|
