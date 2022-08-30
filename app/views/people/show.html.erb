@@ -32,8 +32,9 @@
                   turbo_confirm: "Are you sure?"
                 } %>
   </p>
-      <% end %>
+      
       <%= link_to "Edit this person", edit_person_number_path(@person)%> 
+      <% end %>
       <h2>Add a Number:</h2>
       <%= form_with model: [@person, @person.numbers.build ] do 
       |form| %>
@@ -110,6 +111,12 @@
             <strong>Country:</strong>
             <%= address.country %>
           </p>
+          <p>
+      <%= link_to "Delete Address", [address.person, address], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
             <% end %>
 
         <h2>Add a Address:</h2>

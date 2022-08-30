@@ -1,4 +1,5 @@
 class NumbersController < ApplicationController
+
     def create 
         @person = Person.find(params[:person_id])
         @number = @person.numbers.create(number_params)
@@ -17,26 +18,36 @@ class NumbersController < ApplicationController
 
     # end
 
-    # def new 
-    #     @number = Number.new
-    # end
+    def edit
+
+    end 
 
     def show
         @number = Number.find(params[:id])
       end
 
-    # def create 
-    #     @number = Number.new(number_params)
-    #     if @number.save
-    #         redirect_to person_path(@person)
-    #     else
-    #         render :new, status: :unprocessable_entity
-    #     end 
-    # end
+    def edit 
+    end
+
+    def update
+        respond_to do |format|
+          if @number.update(number_params)
+            format.html { redirect_to person_url(@person), notice: "Person was successfully updated." }
+            format.json { render :show, status: :ok, location: @person }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @person.errors, status: :unprocessable_entity }
+          end
+        end
+      end
 
     private
         def number_params 
             params.require(:number).permit(:phone_number, :commment)
         end
+
+        def set_person
+            @person = Person.find(params[:id])
+          end
 
 end
