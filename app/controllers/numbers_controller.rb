@@ -1,5 +1,6 @@
 class NumbersController < ApplicationController
 
+
     def create 
         @person = Person.find(params[:person_id])
         @number = @person.numbers.create(number_params)
@@ -13,20 +14,27 @@ class NumbersController < ApplicationController
         redirect_to person_path(@person), status: :see_other
     end 
 
-    # def index
-    #     @number = Number.all
+    def index
+        @number = Number.all
 
-    # end
+    end
 
     def edit
-
+        # @person = Person.find(params[:person_id])
+        # @number = @person.numbers.find(params[:id])
     end 
 
     def show
         @number = Number.find(params[:id])
+        @number = @person.numbers.find(params[:id])
       end
 
     def edit 
+    end
+
+    def new
+      @person = Person.find(params[:person_id])
+      @number = @person.numbers.new
     end
 
     def update

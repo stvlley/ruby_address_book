@@ -1,0 +1,15 @@
+<h2>Add a Email:</h2>
+      <%= form_with model: [@person, @person.emails.build ] do 
+         |form| %>
+      <p>
+        <%= form.label :email %><br>
+        <%= form.text_field :email %>
+      </p>
+      <p>
+        <%= form.label :comment %><br>
+        <%= form.text_area :commment %>
+      </p>
+      <p>
+        <%= form.submit %>
+      </p>
+    <% end %>

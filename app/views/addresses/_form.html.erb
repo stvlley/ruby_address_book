@@ -1,0 +1,27 @@
+<h2>Add a Address:</h2>
+  <%= form_with model: [@person, @person.addresses.build ] do 
+         |form| %>
+  <p>
+    <%= form.label :street %><br>
+    <%= form.text_field :street %>
+  </p>
+  <p>
+    <%= form.label :town %><br>
+    <%= form.text_area :town %>
+  </p>
+  <p>
+    <%= form.label :zipcode %><br>
+    <%= form.text_area :zipcode %>
+  </p>
+  <p>
+    <%= form.label :state %><br>
+    <%= form.text_area :state %>
+  </p>
+  <p>
+    <%= form.label :country %><br>
+    <%= form.text_area :country %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
