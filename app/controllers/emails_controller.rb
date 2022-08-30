@@ -16,6 +16,22 @@ class EmailsController < ApplicationController
         redirect_to person_path(@person), status: :see_other
     end
 
+    def edit 
+    
+    end
+    
+    def update
+        respond_to do |format|
+          if @email.update(email_params)
+            format.html { redirect_to person_url(@person), notice: "Person was successfully updated." }
+            format.json { render :show, status: :ok, location: @person }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @person.errors, status: :unprocessable_entity }
+          end
+        end
+      end
+
     private
         def email_params
             params.require(:email).permit(:email, :comment)

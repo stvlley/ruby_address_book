@@ -33,7 +33,7 @@
                 } %>
   </p>
       
-      <%= link_to "Edit this person", edit_person_number_path(@person)%> 
+      <%= link_to "Edit this number", edit_person_number_path(@person)%> 
       <% end %>
       <h2>Add a Number:</h2>
       <%= form_with model: [@person, @person.numbers.build ] do 
@@ -69,6 +69,7 @@
                   turbo_confirm: "Are you sure?"
                 } %>
   </p>
+  <%= link_to "Edit this email", edit_person_email_path(@person)%>
       <% end %>
         <h2>Add a Email:</h2>
           <%= form_with model: [@person, @person.emails.build ] do 
@@ -117,6 +118,7 @@
                   turbo_confirm: "Are you sure?"
                 } %>
   </p>
+      <%= link_to "Edit this address", edit_person_address_path(@person)%>
             <% end %>
 
         <h2>Add a Address:</h2>
