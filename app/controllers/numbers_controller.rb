@@ -32,6 +32,11 @@ class NumbersController < ApplicationController
     def edit 
     end
 
+    def new
+      @person = Person.find(params[:person_id])
+      @number = @person.numbers.new
+    end
+
     def update
         respond_to do |format|
           if @number.update(number_params)

@@ -31,23 +31,15 @@
                   turbo_confirm: "Are you sure?"
                 } %>
         </p>
-        <%= link_to "Edit this number", edit_person_number_path(@person)%>
-      <% end %>
-      <h2>Add a Number:</h2>
-      <%= form_with model: [@person, @person.numbers.build ] do |form| %>
-        <p>
-          <%= form.label :phone_number %><br>
-          <%= form.text_field :phone_number %>
-        </p>
-        <p>
-          <%= form.label :comment %><br>
-          <%= form.text_area :commment %>
-        </p>
-        <p>
-          <%= form.submit %>
-        </p>
-      <% end %>
-    </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
+            <%= link_to "Edit", edit_person_number_path(@person), :class => "btn"%>
+          </div>
+        <% end %>
+        <div class="btn btn-success btn-sm">
+          <%= link_to "Create", new_person_number_path(@person), :class => "btn"%>
+        </div>
+      </div>
     <div class="col">
       <h2>Email</h2>
       <% @person.emails.each do |email| %>
@@ -66,54 +58,52 @@
                 } %>
         </p>
         <div class="d-grid gap-2 col-6 mx-auto">
-        <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
-    <%= link_to "Edit", edit_person_address_path(@person), :class => "btn"%>
-    </div>
-    <% end %>
-  <div class="btn btn-success btn-sm">
-    <%= link_to "Create", new_person_address_path(@person), :class => "btn"%>
-    </div>
-    </div>
-  </div>
-<div class="col">
-  <h2>Address</h2>
-  <% @person.addresses.each do |address| %>
-    <p style="margin-top:20px">
-      <strong>street:</strong>
-      <%= address.street %>
-    </p>
-    <p>
-      <strong>Town:</strong>
-      <%= address.town %>
-    </p>
-    <p>
-      <strong>Zipcode:</strong>
-      <%= address.zipcode %>
-    </p>
-    <p>
-      <strong>State:</strong>
-      <%= address.state %>
-    </p>
-    <p>
-      <strong>Country:</strong>
-      <%= address.country %>
-    </p>
-    <p>
-      <%= link_to "Delete Address", [address.person, address], data: {
+          <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
+            <%= link_to "Edit", edit_person_email_path(@person), :class => "btn"%>
+          </div>
+        <% end %>
+        <div class="btn btn-success btn-sm">
+          <%= link_to "Create", new_person_email_path(@person), :class => "btn"%>
+        </div>
+      </div>
+    <div class="col">
+      <h2>Address</h2>
+      <% @person.addresses.each do |address| %>
+        <p style="margin-top:20px">
+          <strong>street:</strong>
+          <%= address.street %>
+        </p>
+        <p>
+          <strong>Town:</strong>
+          <%= address.town %>
+        </p>
+        <p>
+          <strong>Zipcode:</strong>
+          <%= address.zipcode %>
+        </p>
+        <p>
+          <strong>State:</strong>
+          <%= address.state %>
+        </p>
+        <p>
+          <strong>Country:</strong>
+          <%= address.country %>
+        </p>
+        <p>
+          <%= link_to "Delete Address", [address.person, address], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
                 } %>
-    </p>
-    <div class="d-grid gap-2 col-6 mx-auto">
-    <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
-    <%= link_to "Edit", edit_person_address_path(@person), :class => "btn"%>
+        </p>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
+            <%= link_to "Edit", edit_person_address_path(@person), :class => "btn"%>
+          </div>
+        <% end %>
+        <div class="btn btn-success btn-sm">
+          <%= link_to "Create", new_person_address_path(@person), :class => "btn"%>
+        </div>
+      </div>
     </div>
-    
-  <% end %>
-  <div class="btn btn-success btn-sm">
-    <%= link_to "Create", new_person_address_path(@person), :class => "btn"%>
-    </div>
-    </div>
-</div>
-</div>
-<div>
+  </div>
+  <div>

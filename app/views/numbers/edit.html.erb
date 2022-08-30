@@ -1,18 +1,7 @@
 <div class="container text-center">
   <h1> Edit </h1>
-  <%= form_for :number do |form| %>
-    <div class="card">
-      <div class="card-body">
-        <div class="mb-3">
-          <%= form.label :phone_number %><br>
-          <%= form.text_field :phone_number %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :commment %><br>
-          <%= form.text_area :commment %><br>
-        </div>
-        <%= form.submit %>
-      </div>
-    </div>
-  <% end %>
+  <%= render "form", number: @number %>
+  <div>
+    <%= link_to "Back to people", people_path %>
+  </div>
 </div>
