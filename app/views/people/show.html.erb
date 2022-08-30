@@ -10,7 +10,7 @@
       <li>Comments:<%= @person.comment %></li>
       </ul>
       <div>
-      <%= button_to "Edit this person", edit_person_path(@person)%> 
+      <%= link_to "Edit this person", edit_person_path(@person)%> 
       <%# <%= button_to "Back to people", people_path %> 
       <%= button_to "Destroy this person", @person, method: :delete %>
       </div>
@@ -23,11 +23,18 @@
       <%= number.phone_number %>
       </p>
       <p>
-      <strong>Comment:</strong>
+      <strong>Comments:</strong>
       <%= number.commment %>
       </p>
+      <p>
+    <%= link_to "Delete Number", [number.person, number], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
+      
+      <%= link_to "Edit this person", edit_person_number_path(@person)%> 
       <% end %>
-
       <h2>Add a Number:</h2>
       <%= form_with model: [@person, @person.numbers.build ] do 
       |form| %>
@@ -52,11 +59,17 @@
             <%= email.email %>
           </p>
           <p>
-            <strong>Comment:</strong>
+            <strong>Comments:</strong>
             <%= email.comment %>
           </p>
-            <% end %>
-
+            
+            <p>
+    <%= link_to "Delete Email", [email.person, email], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
+      <% end %>
         <h2>Add a Email:</h2>
           <%= form_with model: [@person, @person.emails.build ] do 
          |form| %>
@@ -98,6 +111,12 @@
             <strong>Country:</strong>
             <%= address.country %>
           </p>
+          <p>
+      <%= link_to "Delete Address", [address.person, address], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
             <% end %>
 
         <h2>Add a Address:</h2>
@@ -131,4 +150,30 @@
 
    </div>
 <div>
+
+
+<table class="table">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">SSN</th>
+    <th scope="col">Birthday</th>
+    <th scope="col">Comment</th>
+    <th scope="col">Number</th>
+    <th scope="col"> Number Comment</th>
+    <th scope="col">Email</th>
+  </tr>
+  <tr>
+    <td><%= @person.salutation %> <%= @person.first_name %> <%= @person.middle_name %> <%= @person.last_name %>  </td>
+    <td><%= @person.ssn %> </td>
+    <td><%= @person.birth_date%> </td>
+    <td><%= @person.comment%> </td>
+    <% @person.numbers.each do |number| %>
+    <td> <%= number.phone_number%> </td> 
+    <td> <%= number.commment%></td>
+     <%end %>
+    <% @person.emails.each do |email| %>
+     <td> <%= email.email %></td>
+     <% end %>
+  </tr>
+</table>
 
