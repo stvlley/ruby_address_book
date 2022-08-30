@@ -1,15 +1,27 @@
-<%= form_with model: address do |form| %>
-  <div class="card">
-    <div class="card-body">
-      <div class="mb-3">
-        <%= form.label :phone_number %><br>
-        <%= form.text_field :phone_number %>
-      </div>
-      <div class="mb-3">
-        <%= form.label :commment %><br>
-        <%= form.text_area :commment %><br>
-      </div>
-      <%= form.submit %>
-    </div>
-  </div>
+<h2>Add a Address:</h2>
+  <%= form_with model: [@person, @person.addresses.build ] do 
+         |form| %>
+  <p>
+    <%= form.label :street %><br>
+    <%= form.text_field :street %>
+  </p>
+  <p>
+    <%= form.label :town %><br>
+    <%= form.text_area :town %>
+  </p>
+  <p>
+    <%= form.label :zipcode %><br>
+    <%= form.text_area :zipcode %>
+  </p>
+  <p>
+    <%= form.label :state %><br>
+    <%= form.text_area :state %>
+  </p>
+  <p>
+    <%= form.label :country %><br>
+    <%= form.text_area :country %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
 <% end %>

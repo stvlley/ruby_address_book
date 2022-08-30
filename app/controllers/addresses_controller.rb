@@ -20,6 +20,11 @@ class AddressesController < ApplicationController
 
     end 
 
+    def new
+      @person = Person.find(params[:person_id])
+      @address = @person.addresses.new
+    end
+
     def update
         respond_to do |format|
           if @address.update(number_params)

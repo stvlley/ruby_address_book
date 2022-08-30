@@ -83,11 +83,10 @@
       </p>
     <% end %>
   </div>
-</div>
 <div class="col">
   <h2>Address</h2>
   <% @person.addresses.each do |address| %>
-    <p>
+    <p style="margin-top:20px">
       <strong>street:</strong>
       <%= address.street %>
     </p>
@@ -113,65 +112,14 @@
                   turbo_confirm: "Are you sure?"
                 } %>
     </p>
-    <%= link_to "Edit this address", edit_person_address_path(@person)%>
+    <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
+    <%= link_to "Edit this address", edit_person_address_path(@person), :class => "btn"%>
+    </div>
+    
   <% end %>
-  <h2>Add a Address:</h2>
-  <%= form_with model: [@person, @person.addresses.build ] do 
-         |form| %>
-  <p>
-    <%= form.label :streetl %><br>
-    <%= form.text_field :street %>
-  </p>
-  <p>
-    <%= form.label :town %><br>
-    <%= form.text_area :town %>
-  </p>
-  <p>
-    <%= form.label :zipcode %><br>
-    <%= form.text_area :zipcode %>
-  </p>
-  <p>
-    <%= form.label :state %><br>
-    <%= form.text_area :state %>
-  </p>
-  <p>
-    <%= form.label :country %><br>
-    <%= form.text_area :country %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  <div class="btn btn-success btn-sm">
+    <%= link_to "Create A Address", new_person_address_path(@person), :class => "btn"%>
+    </div>
 </div>
 </div>
 <div>
-  <table class="table">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">SSN</th>
-      <th scope="col">Birthday</th>
-      <th scope="col">Comment</th>
-      <th scope="col">Number</th>
-      <th scope="col"> Number Comment</th>
-      <th scope="col">Email</th>
-      <th scope="col">Comment</th>
-      <th scope="col">Address</th>
-    </tr>
-    <tr>
-      <td><%= @person.salutation %> <%= @person.first_name %> <%= @person.middle_name %> <%= @person.last_name %>  </td>
-      <td><%= @person.ssn %> </td>
-      <td><%= @person.birth_date%> </td>
-      <td><%= @person.comment%> </td>
-      <% @person.numbers.each do |number| %>
-        <td> <%= number.phone_number%> </td>
-        <td> <%= number.commment%></td>
-      <%end %>
-      <% @person.emails.each do |email| %>
-        <td> <%= email.email %></td>
-        <td> <%=email.comment%> </td>
-      <% end %>
-      <% @person.addresses.each do |address| %>
-        <td> <%= address.street %> </td>
-      <% end %>
-    </tr>
-  </table>
