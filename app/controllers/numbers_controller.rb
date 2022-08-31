@@ -4,14 +4,27 @@ class NumbersController < ApplicationController
     def create 
         @person = Person.find(params[:person_id])
         @number = @person.numbers.create(number_params)
-        redirect_to person_path(@person)
+        respond_to do |format|
+          if @number.save
+            format.html { redirect_to person_path(@person), notice: "Number was successfully created." }
+            format.json { render :show, status: :created, location: @number }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @number.errors, status: :unprocessable_entity }
+          end
+        end
+        # redirect_to person_path(@person)
     end
 
     def destroy 
         @person = Person.find(params[:person_id])
         @number = @person.numbers.find(params[:id])
         @number.destroy
-        redirect_to person_path(@person), status: :see_other
+        respond_to do |format|
+          format.html { redirect_to people_url, notice: "Person was successfully destroyed." }
+          format.json { head :no_content }
+        end
+        # redirect_to person_path(@person), status: :see_other
     end 
 
     def index
@@ -20,8 +33,8 @@ class NumbersController < ApplicationController
     end
 
     def edit
-        # @person = Person.find(params[:person_id])
-        # @number = @person.numbers.find(params[:id])
+       @person = Person.find(params[:person_id])
+       @number = @person.numbers.find(params[:id])
     end 
 
     def show
@@ -44,7 +57,7 @@ class NumbersController < ApplicationController
             format.json { render :show, status: :ok, location: @person }
           else
             format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @person.errors, status: :unprocessable_entity }
+            format.json { render json: @number.errors, status: :unprocessable_entity }
           end
         end
       end
