@@ -1,0 +1,1 @@
+json.array! @address, partial: "addresses/address", as: :address
