@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<div class="containe text-center">
+<div class="container text-center">
   <div class="row">
     <div class="col">
       <h2><%= @person.salutation %> <%= @person.first_name %> <%= @person.middle_name %> <%= @person.last_name %>  </h2>
@@ -40,70 +40,74 @@
           <%= link_to "Create", new_person_number_path(@person), :class => "btn"%>
         </div>
       </div>
-    <div class="col">
-      <h2>Email</h2>
-      <% @person.emails.each do |email| %>
-        <p>
-          <strong>Emails:</strong>
-          <%= email.email %>
-        </p>
-        <p>
-          <strong>Comments:</strong>
-          <%= email.comment %>
-        </p>
-        <p>
-          <%= link_to "Delete Email", [email.person, email], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-        </p>
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
-            <%= link_to "Edit", edit_person_email_path(@person), :class => "btn"%>
-          </div>
-        <% end %>
-        <div class="btn btn-success btn-sm">
-          <%= link_to "Create", new_person_email_path(@person), :class => "btn"%>
-        </div>
-      </div>
-    <div class="col">
-      <h2>Address</h2>
-      <% @person.addresses.each do |address| %>
-        <p style="margin-top:20px">
-          <strong>street:</strong>
-          <%= address.street %>
-        </p>
-        <p>
-          <strong>Town:</strong>
-          <%= address.town %>
-        </p>
-        <p>
-          <strong>Zipcode:</strong>
-          <%= address.zipcode %>
-        </p>
-        <p>
-          <strong>State:</strong>
-          <%= address.state %>
-        </p>
-        <p>
-          <strong>Country:</strong>
-          <%= address.country %>
-        </p>
-        <p>
-          <%= link_to "Delete Address", [address.person, address], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-        </p>
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
-            <%= link_to "Edit", edit_person_address_path(@person), :class => "btn"%>
-          </div>
-        <% end %>
-        <div class="btn btn-success btn-sm">
-          <%= link_to "Create", new_person_address_path(@person), :class => "btn"%>
-        </div>
-      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <h2>Email</h2>
+        <% @person.emails.each do |email| %>
+          <p>
+            <strong>Emails:</strong>
+            <%= email.email %>
+          </p>
+          <p>
+            <strong>Comments:</strong>
+            <%= email.comment %>
+          </p>
+          <p>
+            <%= link_to "Delete Email", [email.person, email], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+          </p>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
+              <%= link_to "Edit", edit_person_email_path(@person), :class => "btn"%>
+            </div>
+          <% end %>
+          
+          <div class="btn btn-success btn-sm">
+            <%= link_to "Create", new_person_email_path(@person), :class => "btn"%>
+          </div>
+        </div>
+      <div class="col">
+        <h2>Address</h2>
+        <% @person.addresses.each do |address| %>
+          <p style="margin-top:20px">
+            <strong>street:</strong>
+            <%= address.street %>
+          </p>
+          <p>
+            <strong>Town:</strong>
+            <%= address.town %>
+          </p>
+          <p>
+            <strong>Zipcode:</strong>
+            <%= address.zipcode %>
+          </p>
+          <p>
+            <strong>State:</strong>
+            <%= address.state %>
+          </p>
+          <p>
+            <strong>Country:</strong>
+            <%= address.country %>
+          </p>
+          <p>
+            <%= link_to "Delete Address", [address.person, address], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+          </p>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="btn btn-warning btn-sm" style="margin-bottom: 20px">
+              <%= link_to "Edit", edit_person_address_path(@person), :class => "btn"%>
+            </div>
+          <% end %>
+          <div class="btn btn-success btn-sm">
+            <%= link_to "Create", new_person_address_path(@person), :class => "btn"%>
+          </div>
+        </div>
   </div>
-  <div>
+</div>
+</div>
+</div>

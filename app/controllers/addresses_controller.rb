@@ -2,7 +2,16 @@ class AddressesController < ApplicationController
     def create
         @person = Person.find(params[:person_id])
         @address = @person.addresses.create(address_params)
-        redirect_to person_path(@person)
+        respond_to do |format|
+          if @address.save
+            format.html { redirect_to person_path(@person), notice: "Address was successfully created." }
+            format.json { render :show, status: :created, location: @number }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @address.errors, status: :unprocessable_entity }
+          end
+        end
+        # redirect_to person_path(@person)
     end
 
     def index
@@ -13,7 +22,11 @@ class AddressesController < ApplicationController
         @person = Person.find(params[:person_id])
         @address = @person.addresses.find(params[:id])
         @address.destroy
-        redirect_to person_path(@person), status: :see_other
+        respond_to do |format|
+          format.html { redirect_to people_url, notice: "Person was successfully destroyed." }
+          format.json { head :no_content }
+        end
+        # redirect_to person_path(@person), status: :see_other
     end 
 
     def edit
@@ -28,11 +41,11 @@ class AddressesController < ApplicationController
     def update
         respond_to do |format|
           if @address.update(number_params)
-            format.html { redirect_to person_url(@person), notice: "Person was successfully updated." }
+            format.html { redirect_to person_url(@person), notice: "Address was successfully updated." }
             format.json { render :show, status: :ok, location: @person }
           else
             format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @person.errors, status: :unprocessable_entity }
+            format.json { render json: @address.errors, status: :unprocessable_entity }
           end
         end
       end

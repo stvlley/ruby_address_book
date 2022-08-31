@@ -1,0 +1,1 @@
+json.array! @email, partial: "emails/email", as: :email

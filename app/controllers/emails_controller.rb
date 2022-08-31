@@ -2,7 +2,16 @@ class EmailsController < ApplicationController
     def create
         @person = Person.find(params[:person_id])
         @email = @person.emails.create(email_params)
-        redirect_to person_path(@person)
+        respond_to do |format|
+          if @email.save
+            format.html { redirect_to person_path(@person), notice: "Email was successfully created." }
+            format.json { render :show, status: :created, location: @number }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @email.errors, status: :unprocessable_entity }
+          end
+        end
+        # redirect_to person_path(@person)
     end
 
     def index 
@@ -13,7 +22,11 @@ class EmailsController < ApplicationController
         @person = Person.find(params[:person_id])
         @email = @person.emails.find(params[:id])
         @email.destroy
-        redirect_to person_path(@person), status: :see_other
+        respond_to do |format|
+          format.html { redirect_to people_url, notice: "Email was successfully destroyed." }
+          format.json { head :no_content }
+        end
+        # redirect_to person_path(@person), status: :see_other
     end
 
     def edit 
@@ -29,11 +42,11 @@ class EmailsController < ApplicationController
     def update
         respond_to do |format|
           if @email.update(email_params)
-            format.html { redirect_to person_url(@person), notice: "Person was successfully updated." }
+            format.html { redirect_to person_url(@person), notice: "Email was successfully updated." }
             format.json { render :show, status: :ok, location: @person }
           else
             format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @person.errors, status: :unprocessable_entity }
+            format.json { render json: @email.errors, status: :unprocessable_entity }
           end
         end
       end
