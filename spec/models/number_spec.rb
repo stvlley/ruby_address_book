@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Number, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+it "is not valid without a phone number" do
+  number = Number.new(phone_number: nil)
+  expect(number).not_to be_valid
+end
+
 end
