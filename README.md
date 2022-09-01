@@ -1,20 +1,21 @@
   ## Address Book
-  
-  ## Description 
-    
-    This is a project built with ruby on rails to to provide users with a a place store contacts along with the adddreses, emails, and personal information. It uses postgreSQL as the relational database. To start using this application one must create an account then create a new "person". After creating a person you will have the option to add any addresses, numbers, or emails related to that person. 
 
   ## Table Of Contents
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
 * [License](#license)
+* [Descciption](#description)
   
   ## Installation 
     
     `bundle install`
 
     `rails s`
+
+## Description 
+    
+    This is a project built with ruby on rails to to provide users with a a place store contacts along with the adddreses, emails, and personal information. It uses postgreSQL as the relational database. To start using this application one must create an account then create a new "person". After creating a person you will have the option to add any addresses, numbers, or emails related to that person.
   
   ## Usage 
     
