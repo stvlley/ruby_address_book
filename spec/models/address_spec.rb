@@ -16,4 +16,9 @@ RSpec.describe Address, type: :model do
     address = Address.new(zipcode: nil)
     expect(address).not_to be_valid
   end
+
+  describe "associtations" do 
+    it { should belong_to(:person) }
+  end
+
 end
