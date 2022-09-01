@@ -2,7 +2,7 @@
 <%= form_with model: [@person, @person.numbers.build ] do |form| %>
   <p>
     <%= form.label :phone_number %><br>
-    <%= form.text_field :phone_number %>
+    <%= form.number_field :phone_number %>
   </p>
   <p>
     <%= form.label :comment %><br>
