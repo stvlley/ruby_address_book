@@ -29,8 +29,9 @@ class EmailsController < ApplicationController
         # redirect_to person_path(@person), status: :see_other
     end
 
-    def edit 
-    
+    def edit
+      @person = Person.find(params[:person_id])
+      @email = Email.find(params[:id])
     end
 
 
@@ -40,8 +41,6 @@ class EmailsController < ApplicationController
     end
     
     def update
-      @person = Person.find(params[:person_id])
-      @email = @person.emails.find(params[email_params])
         respond_to do |format|
           if @email.update(email_params)
             format.html { redirect_to person_url(@person), notice: "Email was successfully updated." }
