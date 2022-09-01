@@ -1,3 +1,4 @@
+<div class="container text-center" style="margin-top: 50px">
 <h2>Add a Email:</h2>
       <%= form_with model: [@person, @person.emails.build ] do 
          |form| %>
@@ -13,3 +14,4 @@
         <%= form.submit class: 'btn btn-success btn-sm' %>
       </p>
     <% end %>
+</div>
