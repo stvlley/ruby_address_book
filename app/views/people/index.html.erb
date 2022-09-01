@@ -1,12 +1,12 @@
 <p style="color: green"><%= notice %></p>
 <div class="container text-center">
-  <h1>Contacts</h1>
+  <h1><u>Contacts</u></h1>
   <div>
     <% @people.each do |person| %>
       <li>
-        <%= link_to person.first_name, person %>
+        <%= link_to person.first_name, person  %>
       </li>
     <% end %>
-    <%= link_to "New contact", new_person_path %>
+    <%= link_to "New contact", new_person_path,:class => "btn btn-success", :style => "margin-top: 20px" %>
   </div>
 </div>

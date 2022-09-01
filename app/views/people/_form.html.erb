@@ -8,28 +8,28 @@
   </div>
   <div>
     <%= form.label :first_name %><br>
-    <%= form.text_area :first_name %><br>
+    <%= form.text_field :first_name %><br>
     <% person.errors.full_messages_for(:first_name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :middle_name %><br>
-    <%= form.text_area :middle_name %><br>
+    <%= form.text_field :middle_name %><br>
     <% person.errors.full_messages_for(:middle_name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :last_name %><br>
-    <%= form.text_area :last_name %><br>
+    <%= form.text_field :last_name %><br>
     <% person.errors.full_messages_for(:last_name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :ssn %><br>
-    <%= form.text_area :ssn %><br>
+    <%= form.text_field :ssn %><br>
     <% person.errors.full_messages_for(:ssn).each do |message| %>
       <div><%= message %></div>
     <% end %>
