@@ -1,20 +1,20 @@
 <p style="color: green"><%= notice %></p>
-<div class="container text-center">
+<div class="container text-center" style="margin-top: 65px">
   <div class="row">
-    <div class="col">
-      <h2><%= @person.salutation %> <%= @person.first_name %> <%= @person.middle_name %> <%= @person.last_name %>  </h2>
-      <ul style="list-style-type: none">
-        <li>Social Security Number: <%= @person.ssn %></li>
-        <li>Birthday: <%= @person.birth_date %></li>
-        <li>Comments:<%= @person.comment %></li>
-      </ul>
+    <div class="col" style="border-right: solid">
+      <h2><u><%= @person.salutation %>. <%= @person.first_name %> <%= @person.middle_name %> <%= @person.last_name %></u>  </h2>
+     
+        <p><strong>SSN:</strong> <%= @person.ssn %></p>
+        <p><strong>Birthday:</strong> <%= @person.birth_date %></p>
+        <p><strong>Comments:</strong><%= @person.comment %></p>
+      
       <div style="display: flex; justify-content: center;">
-        <%= link_to "Edit", edit_person_path(@person), :class => 'btn btn-warning btn-sm'%>
-        <%= button_to "Delete this person", @person, method: :delete, :class => 'btn btn-danger btn-sm', :style=> "margin-left: 5px"%>
+        <%= link_to "Edit", edit_person_path(@person), :class => 'btn btn-warning'%>
+        <%= button_to "Delete", @person, method: :delete, :class => 'btn btn-danger', :style=> "margin-left: 5px"%>
       </div>
     </div>
-    <div class="col">
-      <h2>Number</h2>
+    <div class="col" style="border-right: solid">
+      <h2><u>Number</u></h2>
       <% @person.numbers.each do |number| %>
         <p>
           <strong>Phone Numbers:</strong>
@@ -28,14 +28,14 @@
           <%= link_to "Delete Number", [number.person, number], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
-                } %>
+          }, :class => "btn btn-danger" %>
         </p>
-        <%= link_to "Edit", edit_person_number_path(@person), :class => "btn btn-warning btn-sm"%>
+        <%= link_to "Edit", edit_person_number_path(@person), :class => "btn btn-warning"%>
       <% end %>
-      <%= link_to "Create", new_person_number_path(@person), :class => "btn btn-success btn-sm"%>
+      <%= link_to "Create", new_person_number_path(@person), :class => "btn btn-success"%>
     </div>
-    <div class="col">
-      <h2>Email</h2>
+    <div class="col" style="border-right: solid">
+      <h2><u>Email</u></h2>
       <% @person.emails.each do |email| %>
         <p>
           <strong>Emails:</strong>
@@ -49,17 +49,17 @@
           <%= link_to "Delete Email", [email.person, email], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
-                } %>
+                }, :class => "btn btn-danger" %>
         </p>
         <%= link_to "Edit", edit_person_email_path(@person), :class => "btn btn-warning"%>
       <% end %>
       <%= link_to "Create", new_person_email_path(@person), :class => "btn btn-success"%>
     </div>
     <div class="col">
-      <h2>Address</h2>
+      <h2><u>Address</u></h2>
       <% @person.addresses.each do |address| %>
         <p style="margin-top:20px">
-          <strong>street:</strong>
+          <strong>Street:</strong>
           <%= address.street %>
         </p>
         <p>
@@ -82,7 +82,7 @@
           <%= link_to "Delete Address", [address.person, address], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
-                } %>
+                }, :class => "btn btn-danger" %>
         </p>
         <%= link_to "Edit", edit_person_address_path(@person), :class => "btn btn-warning"%>
       <% end %>
