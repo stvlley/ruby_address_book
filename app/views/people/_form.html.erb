@@ -1,7 +1,7 @@
 <%= form_with model: person do |form| %>
   <div>
     <%= form.label :salutation %><br>
-    <%= form.text_field :salutation %>
+    <%= form.select :salutation, ["Mr", "Mrs", "Ms", "Jr"] %>
     <% person.errors.full_messages_for(:salutation).each do |message| %>
       <div><%= message %></div>
     <% end %>
