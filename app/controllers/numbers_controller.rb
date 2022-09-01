@@ -34,7 +34,7 @@ class NumbersController < ApplicationController
 
     def edit
        @person = Person.find(params[:person_id])
-       @number = @person.numbers.find(params[:id])
+
     end 
 
     def show
@@ -43,6 +43,7 @@ class NumbersController < ApplicationController
       end
 
     def edit 
+      @person = Person.find(params[:person_id])
     end
 
     def new

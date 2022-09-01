@@ -30,7 +30,7 @@ class AddressesController < ApplicationController
     end 
 
     def edit
-
+      @person = Person.find(params[:person_id])
     end 
 
     def new
