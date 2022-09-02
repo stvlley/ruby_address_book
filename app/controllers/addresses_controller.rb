@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
-    def create
-        @person = Person.find(params[:person_id])
+  before_action :set_person
+
+    def create       
         @address = @person.addresses.create(address_params)
         respond_to do |format|
           if @address.save
@@ -19,7 +20,6 @@ class AddressesController < ApplicationController
     end
 
     def destroy
-        @person = Person.find(params[:person_id])
         @address = @person.addresses.find(params[:id])
         @address.destroy
         respond_to do |format|
@@ -30,17 +30,17 @@ class AddressesController < ApplicationController
     end 
 
     def edit
-      @person = Person.find(params[:person_id])
+      @address = Address.find params[:id]
     end 
 
     def new
-      @person = Person.find(params[:person_id])
       @address = @person.addresses.new
     end
 
     def update
+        @address = Address.find params[:id]
         respond_to do |format|
-          if @address.update(number_params)
+          if @address.update(address_params)
             format.html { redirect_to person_url(@person), notice: "Address was successfully updated." }
             format.json { render :show, status: :ok, location: @person }
           else
@@ -51,7 +51,13 @@ class AddressesController < ApplicationController
       end
 
     private
+
+      
         def address_params
             params.require(:address).permit(:street, :town, :zipcode, :state, :country)
+        end
+
+        def set_person
+          @person = Person.find(params[:person_id])
         end
 end

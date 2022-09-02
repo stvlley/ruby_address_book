@@ -1,8 +1,7 @@
 class NumbersController < ApplicationController
-
+    before_action :set_person
 
     def create 
-        @person = Person.find(params[:person_id])
         @number = @person.numbers.create(number_params)
         respond_to do |format|
           if @number.save
@@ -17,7 +16,6 @@ class NumbersController < ApplicationController
     end
 
     def destroy 
-        @person = Person.find(params[:person_id])
         @number = @person.numbers.find(params[:id])
         @number.destroy
         respond_to do |format|
@@ -32,26 +30,21 @@ class NumbersController < ApplicationController
 
     end
 
-    def edit
-       @person = Person.find(params[:person_id])
-
-    end 
-
     def show
         @number = Number.find(params[:id])
         @number = @person.numbers.find(params[:id])
       end
 
     def edit 
-      @person = Person.find(params[:person_id])
+      @number = Number.find(params[:id])
     end
 
     def new
-      @person = Person.find(params[:person_id])
       @number = @person.numbers.new
     end
 
     def update
+      @number = Number.find params[:id]
         respond_to do |format|
           if @number.update(number_params)
             format.html { redirect_to person_url(@person), notice: "Person was successfully updated." }
@@ -69,7 +62,7 @@ class NumbersController < ApplicationController
         end
 
         def set_person
-            @person = Person.find(params[:id])
+            @person = Person.find(params[:person_id])
           end
 
 end

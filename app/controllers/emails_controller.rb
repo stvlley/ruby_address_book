@@ -1,6 +1,7 @@
 class EmailsController < ApplicationController
+  before_action :set_person
+
   def create
-      @person = Person.find(params[:person_id])
       @email = @person.emails.create(email_params)
       respond_to do |format|
         if @email.save
@@ -15,11 +16,10 @@ class EmailsController < ApplicationController
   end
 
   def index 
-      @email = Email.all
+    @email = Email.all
   end
 
   def destroy 
-      @person = Person.find(params[:person_id])
       @email = @person.emails.find(params[:id])
       @email.destroy
       respond_to do |format|
@@ -30,16 +30,16 @@ class EmailsController < ApplicationController
   end
 
   def edit
-    @person = Person.find(params[:person_id]) 
+    @email = Email.find(params[:id])
   end
 
 
   def new
-    @person = Person.find(params[:person_id])
     @email = @person.emails.new
   end
   
   def update
+    @email = Email.find params[:id]
       respond_to do |format|
         if @email.update(email_params)
           format.html { redirect_to person_url(@person), notice: "Email was successfully updated." }
@@ -52,7 +52,13 @@ class EmailsController < ApplicationController
     end
 
   private
+
+
       def email_params
           params.require(:email).permit(:email, :comment)
+      end
+
+      def set_person
+        @person = Person.find(params[:person_id])
       end
 end

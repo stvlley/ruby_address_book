@@ -1,5 +1,5 @@
 <h2>Add a Number:</h2>
-<%= form_with model: [@person, @person.numbers.build ] do |form| %>
+<%= form_with model: [@person, @number] do |form| %>
   <p>
     <%= form.label :phone_number %><br>
     <%= form.number_field :phone_number %>

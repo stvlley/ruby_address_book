@@ -1,6 +1,5 @@
 <h2>Add a Address:</h2>
-  <%= form_with model: [@person, @person.addresses.build ] do 
-         |form| %>
+  <%= form_with  model: [@person, @address] do |form| %>
   <p>
     <%= form.label :street %><br>
     <%= form.text_field :street %>
