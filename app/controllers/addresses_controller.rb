@@ -57,7 +57,7 @@ class AddressesController < ApplicationController
             params.require(:address).permit(:street, :town, :zipcode, :state, :country)
         end
 
-        def set_person
+        def set_person          
           @person = Person.find(params[:person_id])
         end
 end
