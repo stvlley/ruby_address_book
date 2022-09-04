@@ -50,3 +50,41 @@ RSpec.describe 'Creating a Number' do
         end
     end
 end
+
+RSpec.describe 'Creating a Number' do 
+    describe 'viewing the numbers page requires you to be logged in' do 
+        it "after a successfull log in a user is then able to create a new contact and number" do
+            
+             visit(new_person_path)
+
+             fill_in('Name', with: "Bobby")
+             fill_in('Email', with: "email@email.com")
+             fill_in('Password', with: "password")
+             fill_in('Password confirmation', with: "password")
+
+             click_button("Create User")
+
+            click_link('New contact')
+
+            fill_in('First name', with: "Bobby")
+            fill_in('Middle name', with: "Middle")
+            fill_in('Last name', with: "Garza")
+             
+            click_button("Create Person")
+
+            find("#create-number").click
+
+            fill_in('Phone number', with: "123-123-1232")
+            
+            click_button("Create Number")
+
+            find("#update-number").click
+
+            fill_in('Phone number', with: "123-111-1111")
+
+            click_button("Update Number")
+
+            expect(page).to have_content("Person was successfully updated.")
+        end
+    end
+end

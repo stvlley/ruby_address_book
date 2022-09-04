@@ -9,7 +9,7 @@
         <p><strong>Comments:</strong><%= @person.comment %></p>
       
       <div style="display: flex; justify-content: center;">
-        <%= link_to "Edit", edit_person_path(@person), :class => 'btn btn-warning'%>
+        <%= link_to "Edit", edit_person_path(@person), :class => 'btn btn-warning', id: "update-person"%>
         <%= button_to "Delete", @person, method: :delete, :class => 'btn btn-danger', :style=> "margin-left: 5px"%>
       </div>
     </div>
@@ -30,7 +30,7 @@
                   turbo_confirm: "Are you sure?"
           }, :class => "btn btn-danger" %>
         </p>
-        <%= link_to "Edit", edit_person_number_path(@person, number), :class => "btn btn-warning"%>
+        <%= link_to "Edit", edit_person_number_path(@person, number), :class => "btn btn-warning", id: "update-number"%>
       <% end %>
       <%= link_to "Create", new_person_number_path(@person), :class => "btn btn-success", id: "create-number"%>
     </div>
@@ -51,7 +51,7 @@
                   turbo_confirm: "Are you sure?"
                 }, :class => "btn btn-danger" %>
         </p>
-        <%= link_to "Edit", edit_person_email_path(@person, email), :class => "btn btn-warning"%>
+        <%= link_to "Edit", edit_person_email_path(@person, email), :class => "btn btn-warning", id: "update-email"%>
       <% end %>
       <%= link_to "Create", new_person_email_path(@person), :class => "btn btn-success", id: "create-email"%>
     </div>
@@ -84,7 +84,7 @@
                   turbo_confirm: "Are you sure?"
                 }, :class => "btn btn-danger" %>
         </p>
-        <%= link_to "Edit", edit_person_address_path(@person, address), :class => "btn btn-warning" %>
+        <%= link_to "Edit", edit_person_address_path(@person, address), :class => "btn btn-warning", id: "update-address" %>
       <% end %>
       <%= link_to "Create", new_person_address_path(@person), :class => "btn btn-success", id: "create-address"%>
     </div>

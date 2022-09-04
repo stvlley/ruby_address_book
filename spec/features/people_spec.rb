@@ -61,3 +61,43 @@ RSpec.describe 'Signing Up' do
         end
     end
 end
+
+RSpec.describe 'Updating a contact' do 
+    describe 'viewing the people page requires you to be logged in' do 
+        it "after a successfull log in a user is then able to create a new contact" do
+            
+             visit(new_person_path)
+
+             fill_in('Name', with: "Bobby")
+             fill_in('Email', with: "email@email.com")
+             fill_in('Password', with: "password")
+             fill_in('Password confirmation', with: "password")
+
+             click_button("Create User")
+
+        expect(page).to have_content("Contacts")
+        expect(page).to have_content('New contact')
+
+            click_link('New contact')
+
+            fill_in('First name', with: "Bobby")
+            fill_in('Middle name', with: "Middle")
+            fill_in('Last name', with: "Garza")
+             
+            click_button("Create Person")
+
+            expect(page).to have_content("Person was successfully created.")
+            expect(page).to have_content("Bobby")
+
+            find("#update-person").click
+
+            fill_in('First name', with: "Nick")
+            fill_in('Middle name', with: "Brooks")
+            fill_in('Last name', with: "Garza")
+
+            click_button("Update Person")
+
+            expect(page).to have_content("Person was successfully updated.")
+        end
+    end
+end
