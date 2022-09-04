@@ -2,11 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'authentication' do 
     describe 'viewing the people page requires you to be logged in' do 
-        it "shows asks you to login or signup before being able to add people" do
+        it "asks you to login or signup when arriving on root path" do
             
-            #  user = User.first_or_create!(name: "Roger", email: "roger@test.com", password: "secret", password_confirmation: "secret")
-            #  person = Person.create!(user: user, first_name: 'James', last_name: 'Rodriguese') 
-        
              visit('/')
 
         expect(page).to have_content("Log In Sign Up")
@@ -15,14 +12,11 @@ RSpec.describe 'authentication' do
 end
 
 
-RSpec.describe 'authentication' do 
+RSpec.describe 'Creating a contact' do 
     describe 'viewing the people page requires you to be logged in' do 
-        it "once logged in user is then able to create a new contact" do
+        it "after a successfull log in a user is then able to create a new contact" do
             
-            #  user = User.first_or_create!(name: "Roger", email: "roger@test.com", password: "secret", password_confirmation: "secret")
-            #  person = Person.create!(user: user, first_name: 'James', last_name: 'Rodriguese') 
-        
-             visit('/')
+             visit(new_person_path)
 
              fill_in('Name', with: "Bobby")
              fill_in('Email', with: "email@email.com")
@@ -32,6 +26,36 @@ RSpec.describe 'authentication' do
              click_button("Create User")
 
         expect(page).to have_content("Contacts")
+        expect(page).to have_content('New contact')
+
+            click_link('New contact')
+
+            fill_in('First name', with: "Bobby")
+            fill_in('Middle name', with: "Middle")
+            fill_in('Last name', with: "Garza")
+             
+            click_button("Create Person")
+
+            expect(page).to have_content("Person was successfully created.")
+        end
+    end
+end
+
+
+RSpec.describe 'Signing Up' do 
+    describe 'A user is able to sign up and then be directed to the root path' do 
+        it "signs you up for a account then directs you to the people index page " do
+            
+             visit(new_person_path)
+
+             fill_in('Name', with: "Bobby")
+             fill_in('Email', with: "email@email.com")
+             fill_in('Password', with: "password")
+             fill_in('Password confirmation', with: "password")
+
+             click_button("Create User")
+
+        expect(page).to have_content("You have successfully signed up.")
         expect(page).to have_content('New contact')
         end
     end
