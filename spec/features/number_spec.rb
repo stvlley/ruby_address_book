@@ -19,9 +19,9 @@ RSpec.describe 'GET /people/:id/numbers/new' do
 end
 
 
-RSpec.describe 'Creating a Number' do 
+RSpec.describe 'Updating a Number' do 
     describe 'viewing the numbers page requires you to be logged in' do 
-        it "after a successfull log in a user is then able to create a new contact and number" do
+        it "after a successfull log in a user is then able to create a new contact and update number" do
             
              visit(new_person_path)
 
