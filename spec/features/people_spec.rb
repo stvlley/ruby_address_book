@@ -64,7 +64,7 @@ end
 
 RSpec.describe 'Updating a contact' do 
     describe 'viewing the people page requires you to be logged in' do 
-        it "after a successfull log in a user is then able to create and update contact" do
+        it "after a successfull log in a user is then able to create and update a contact" do
             
              visit(new_person_path)
 
