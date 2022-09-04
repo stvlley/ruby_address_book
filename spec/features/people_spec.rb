@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'authentication' do 
-    describe 'viewing the people page requires you to be logged in' do 
+    describe 'viewing the root page requires you to be logged in' do 
         it "asks you to login or signup when arriving on root path" do
             
              visit('/')
@@ -37,6 +37,7 @@ RSpec.describe 'Creating a contact' do
             click_button("Create Person")
 
             expect(page).to have_content("Person was successfully created.")
+            expect(page).to have_content("Bobby")
         end
     end
 end
