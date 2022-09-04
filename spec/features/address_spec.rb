@@ -56,7 +56,7 @@ RSpec.describe 'Creating a Address' do
 end
 RSpec.describe 'Updating a Address' do 
     describe 'viewing the address page requires you to be logged in' do 
-        it "after a successfull log in a user is then able to create a new contact and addess" do
+        it "after a successfull log in a user is then able to create a new contact and update addess" do
             
              visit(new_person_path)
 

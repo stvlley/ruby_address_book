@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
   def destroy 
     session.delete(:user_id)
-    redirect_to root_path, notice: "You have Logged Out."
+    redirect_to root_path, alert: "You have Logged Out."
   end
 
 end
