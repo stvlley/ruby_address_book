@@ -32,7 +32,7 @@
         </p>
         <%= link_to "Edit", edit_person_number_path(@person, number), :class => "btn btn-warning"%>
       <% end %>
-      <%= link_to "Create", new_person_number_path(@person), :class => "btn btn-success"%>
+      <%= link_to "Create", new_person_number_path(@person), :class => "btn btn-success", id: "create-number"%>
     </div>
     <div class="col" style="border-right: solid">
       <h2><u>Email</u></h2>
@@ -53,7 +53,7 @@
         </p>
         <%= link_to "Edit", edit_person_email_path(@person, email), :class => "btn btn-warning"%>
       <% end %>
-      <%= link_to "Create", new_person_email_path(@person), :class => "btn btn-success"%>
+      <%= link_to "Create", new_person_email_path(@person), :class => "btn btn-success", id: "create-email"%>
     </div>
     <div class="col">
       <h2><u>Address</u></h2>
@@ -86,6 +86,6 @@
         </p>
         <%= link_to "Edit", edit_person_address_path(@person, address), :class => "btn btn-warning" %>
       <% end %>
-      <%= link_to "Create", new_person_address_path(@person), :class => "btn btn-success"%>
+      <%= link_to "Create", new_person_address_path(@person), :class => "btn btn-success", id: "create-address"%>
     </div>
   </div>
